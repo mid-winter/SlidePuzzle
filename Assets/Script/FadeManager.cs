@@ -12,11 +12,11 @@ public class FadeManager : MonoBehaviour
     private Image _fadeObject = null;
 
     private static bool _fadeFlug = false;
-    //public bool isFadeFlug
-    //{
-    //    get { return _fadeFlug; }
-    //    set { _fadeFlug = value; }
-    //}
+    public bool isFadeFlug
+    {
+        get { return _fadeFlug; }
+        private set { _fadeFlug = value; }
+    }
 
     void Awake()
     {
@@ -34,14 +34,12 @@ public class FadeManager : MonoBehaviour
         _fadeObject.color = new Color(0.0f, 0.0f, 0.0f, _alpha);
 
     }
-
-    //void Update()
-    //{
-    //    if(Input.GetMouseButtonDown(0))
-    //    {
-    //        FadeStart(GameScene.GAME);
-    //    }
-    //}
+    
+    //UIのボタンはこっち呼ばれる
+    public void ButtonSceneChange(int scene)
+    {
+        SceneChange((GameScene)scene);
+    }
 
     public void SceneChange(GameScene scene)
     {
