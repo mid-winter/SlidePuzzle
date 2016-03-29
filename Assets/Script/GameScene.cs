@@ -6,5 +6,9 @@
 public enum GameScene
 {
     TITLE, //0
-    GAME //1
+    MAINMENU, //1
+    PRACTICE, //2
+    BATTLE, //3
+    SHOP, //4
+    RECORD //5
 }
