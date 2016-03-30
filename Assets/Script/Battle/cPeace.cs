@@ -15,4 +15,12 @@ public class cPeace : MonoBehaviour
     {
 
     }
+
+    void Swap(int before, int after)
+    {
+        int temp;
+        temp = before;
+        before = after;
+        after = before;
+    }
 }
