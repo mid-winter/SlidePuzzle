@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// シングルタッチしか対応していません
+/// </summary>
 public class TouchManager : MonoBehaviour
 {
 
@@ -53,13 +56,18 @@ public class TouchManager : MonoBehaviour
         return Input.GetMouseButtonUp(0);
     }
 
-    //public static Vector3 TouchPosition()
-    //{
-    //    if (Application.platform == RuntimePlatform.Android
-    //        || Application.platform == RuntimePlatform.IPhonePlayer)
-    //    {
-            
-    //    }
+    /// <summary>
+    /// タッチの座標を返す(スクリーン座標)
+    /// </summary>
+    /// <returns></returns>
+    public static Vector2 TouchPosition()
+    {
+        if (Application.platform == RuntimePlatform.Android
+            || Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+            return Input.touches[0].position;
+        }
 
-    //}
+        return Input.touches[0].position;
+    }
 }
