@@ -11,6 +11,9 @@ public class FadeManager : MonoBehaviour
     private float _alpha = 0.0f;
     private Image _fadeObject = null;
 
+    [SerializeField, Range(0.001f, 0.01f), Tooltip("フェイドスピード")]
+    private float _speed = 0.01f;
+
     private static bool _fadeFlug = false;
     public bool isFadeFlug
     {
@@ -50,6 +53,8 @@ public class FadeManager : MonoBehaviour
 
     public IEnumerator Fade(GameScene scene)
     {
+        GetComponent<Canvas>().sortingOrder = 10;
+        yield return null;
         while (_alpha < 1.0f)
         {
             FadeIn();
@@ -58,28 +63,27 @@ public class FadeManager : MonoBehaviour
 
         FadeAdjustment(1.0f);
         SceneManager.LoadScene((int)scene);
-
         while (_alpha > 0.0f)
         {
             FadeOut();
             yield return null;
         }
-
         FadeAdjustment(0.0f);
         _fadeFlug = false;
+        GetComponent<Canvas>().sortingOrder = -1;
         yield return null;
     }
 
     private void FadeIn()
     {
         _fadeObject.color = new Color(0.0f, 0.0f, 0.0f, _alpha);
-        _alpha += 0.01f;
+        _alpha += _speed;
     }
 
     private void FadeOut()
     {
         _fadeObject.color = new Color(0.0f, 0.0f, 0.0f, _alpha);
-        _alpha -= 0.01f;
+        _alpha -= _speed;
     }
 
     private void FadeAdjustment(float alpha)
