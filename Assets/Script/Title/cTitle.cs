@@ -9,7 +9,7 @@ public class cTitle : MonoBehaviour
     ///<summary> 初期化 </summary>
     void Awake()
     {
-        _fadeManager = 
+        _fadeManager =
             GameObject.Find("FadeCanvas").
             GetComponent<FadeManager>();
     }
@@ -19,7 +19,7 @@ public class cTitle : MonoBehaviour
     {
         
         if (TouchManager.TouchBegin()) {
-            _fadeManager.SceneChange(GameScene.MAINMENU);
+            _fadeManager.StartFade(GameScene.MAINMENU);
         }
     }
 }
